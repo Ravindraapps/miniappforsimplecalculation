@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&family=Nunito+Sans:wght@200&family=Roboto&family=Rubik&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        #container{
+            border: 5px solid black;
+            width: 40%;
+            margin: auto;
+            height: 610px;
+            padding-top: 1%;
+            background-color: rgb(80, 248, 248);
+            border-radius: 10px;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        }
+        .displayCal{
+            border: 3px solid rgb(68, 68, 68);
+            width: 80%;
+            margin: auto;
+            height: 40px;
+            border-radius: 10px;
+            background-color: rgb(148, 145, 145);
+            font-size: 50px;
+            padding: 20px;
+            font-family: 'Lato', sans-serif;
+            font-family: 'Nunito Sans', sans-serif;
+            font-family: 'Roboto', sans-serif;
+            font-family: 'Rubik', sans-serif;
+        }
+        #keyBoard{
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: repeat(3,100px);
+            justify-content: space-between;
+            text-align: center;
+            font-size: 28px;
+            font-weight: bolder;
+            margin-left: 50px;
+            margin-right: 50px;
+            row-gap: 10px;
+            font-family: 'Lato', sans-serif;
+            font-family: 'Nunito Sans', sans-serif;
+            font-family: 'Roboto', sans-serif;
+            font-family: 'Rubik', sans-serif;
+        }
+        #keyBoard > div{
+            border: 1px solid black;
+            border-radius: 5px;
+            height: 30px;
+            padding: 20px;
+            background-color: black;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h3 class="displayCal"></h3>
+        <div id="keyBoard">
+            <div onclick="getVal('1')">1</div>
+            <div onclick="getVal('2')">2</div>
+            <div onclick="getVal('3')">3</div>
+            <div onclick="getVal('4')">4</div>
+            <div onclick="getVal('5')">5</div>
+            <div onclick="getVal('6')">6</div>
+            <div onclick="getVal('7')">7</div>
+            <div onclick="getVal('8')">8</div>
+            <div onclick="getVal('9')">9</div>
+            <div onclick="getVal('0')">0</div>
+            <div onclick="add()">+</div>
+            <div onclick="substract()">-</div>
+            <div onclick="mult()">*</div>
+            <div onclick="div()">/</div>
+            <div onclick="clearDisplay()">Clear</div>
+            <div onclick="doCal()">=</div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    let out = "", prev = null, curr = null, symb = null;
+    let disp = document.querySelector(".displayCal");
+    function getVal(val){
+        out += val;
+        disp.textContent = out;
+    }
+
+    function clearDisplay(){
+        out = "";
+        disp.textContent = out;
+    }
+
+    function add(){
+        prev = +out;
+        out = "";
+        symb = "+";
+    }
+
+    function substract(){
+        prev = +out;
+        out = "";
+        symb = "-";
+    }
+
+    function mult(){
+        prev = +out;
+        out = "";
+        symb = "*";
+    }
+
+    function div(){
+        prev = +out;
+        out = "";
+        symb = "/";
+    }
+
+    function doCal(){
+        curr = +out;
+        if(symb === "+"){
+            out = prev + curr;
+            disp.textContent = out;
+        }else if(symb === "-"){
+            out = prev - curr;
+            disp.textContent = out;
+        }else if(symb === "*"){
+            out = prev * curr;
+            disp.textContent = out;
+        }else if(symb === "/"){
+            out = prev/curr
+            disp.textContent = out;
+        }
+    }
+
+</script>
